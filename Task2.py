@@ -5,6 +5,7 @@ for x in range(1,100):
         s+="Fizz"
     if x % 5==0:
         s+="Buzz"
-    if s=='':
-        s=x
-    print(s,end=' ') 
+    if not s:
+        s = str(x)
+    print(s, end=' ')
+print("")
