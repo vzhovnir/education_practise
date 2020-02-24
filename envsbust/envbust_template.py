@@ -13,7 +13,7 @@ def export():
     new_file_name = "upt_" + file_name
         with open(file_name,"r") as f:
             content = f.read()
-        t = string.Template(content).substitute(values)
+        t = string.Template(content).substitute(dict_paramameters)
         with open(new_file_name,"w+") as f:
             f.write(str(t)+'\n')
         
