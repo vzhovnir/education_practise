@@ -41,7 +41,7 @@ class HandlerRequest(BaseHTTPRequestHandler):
 
 
 def run(server_class=HTTPServer, handler_class=HandlerRequest, port=8080):
-    server_address = ('172.18.214.118', port)
+    server_address = ("", port)
     httpd = server_class(server_address, handler_class)
     try:
         httpd.serve_forever()

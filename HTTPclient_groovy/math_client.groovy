@@ -2,12 +2,6 @@
 import groovy.json.JsonOutput
 
 
-main()
-def main() {
-    def params = params_line()
-    def result = request_post(params)
-   }
-
 def params_line(){
      def params = []
      for (param in this.args){
@@ -22,7 +16,9 @@ def params_line(){
 }
 
 def request_post(params){
-     def post = new URL("http://127.0.0.1:8080").openConnection();
+     String PORT = "8080"
+     String ADDR = "127.0.0.1"
+     def post = new URL("http://${ADDR.toString()}:${PORT.toString()}").openConnection();
      def message = ["operation":"${args[1]}","arg1":"${args[0]}","arg2":"${args[2]}"];
      String json = groovy.json.JsonOutput.toJson(message)
      post.setRequestMethod("POST");
@@ -31,11 +27,16 @@ def request_post(params){
      post.getOutputStream().write(json.getBytes("UTF-8"));
      def postRC = post.getResponseCode();
      println(postRC);
-     if(postRC.equals(200)) {
+     if(postRC == 200) {
          println(post.getInputStream().getText());
          }
 }
-    
+
+def main() {
+    def params = params_line()
+    def result = request_post(params)
+   }    
+   main()
 
     
     
