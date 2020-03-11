@@ -22,7 +22,7 @@ def params_line(){
 }
 
 def request_post(params){
-     def post = new URL("http://172.18.214.118:8080").openConnection();
+     def post = new URL("http://127.0.0.1:8080").openConnection();
      def message = ["operation":"${args[1]}","arg1":"${args[0]}","arg2":"${args[2]}"];
      String json = groovy.json.JsonOutput.toJson(message)
      post.setRequestMethod("POST");
